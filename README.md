@@ -1,7 +1,6 @@
 Terraform module which create RAM users on Alibaba Cloud.  
 terraform-alicloud-ram-user
-
-=====================================================================
+--------------------------
 
 English | [简体中文](https://github.com/terraform-alicloud-modules/terraform-alicloud-ram-user/blob/master/README-CN.md)
 
