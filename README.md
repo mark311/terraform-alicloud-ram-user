@@ -59,7 +59,7 @@ module "ram_user" {
   source = "terraform-alicloud-modules/ram-user/alicloud"
 
   ################################
-  # 创建RAM用户
+  # RAM user
   ################################
   user_name    = "test-user"
   mobile       = "86-18688888888"
@@ -67,28 +67,28 @@ module "ram_user" {
   comments     = "this is a test user"
   
   ################################
-  # 创建RAM用户的 login profile和 access key
+  # RAM login profile/RAM access key
   ################################
   create_ram_access_key         = true
   password                      = "Yourpassword_1234"
   create_ram_user_login_profile = true
   
   ################################
-  # 为RAM用户绑定系统或自定义策略
+  # RAM user policy attachment
   ################################
   create_user_attachment = true
   policies = [
-    # 绑定系统策略
+    # Binding a system policy.
     {
       policy_names = join(",", ["AliyunVPCFullAccess", "AliyunKafkaFullAccess"])
       policy_type  = "System"
     },
-    # 绑定自定义策略
+    # When binding custom policy, make sure this policy has been created.
     {
       policy_names = "VpcListTagResources,RamPolicyForZhouqilin"
       policy_type  = "Custom"
     },
-    # 绑定自定义策略
+    # Create policy and bind the ram user.
     {
       policy_names = join(",", ["manage-slb-and-eip-resource", "manage-ecs-vpc-and-vswitch-resource"])
     }
