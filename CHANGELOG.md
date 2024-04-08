@@ -1,4 +1,8 @@
-## 1.2.0 (Unreleased)
+## 1.3.0 (Unreleased)
+## 1.2.0 (April 8, 2024)
+
+- improve the examples and docs [GH-8](https://github.com/alibabacloud-automation/terraform-alicloud-ram-user/pull/8)
+
 ## 1.1.0 (December 6, 2021)
 
 ENHANCEMENTS:
