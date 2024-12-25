@@ -109,10 +109,22 @@ variable "create_ram_access_key" {
   default     = false
 }
 
+variable "pgp_key" {
+  description = "Either a base-64 encoded PGP public key, or a keybase username in the form"
+  type        = string
+  default     = ""
+}
+
 variable "secret_file" {
   description = "A file used to store access key and secret key of ther user."
   type        = string
   default     = ""
+}
+
+variable "status" {
+  description = "Status of access key"
+  type        = string
+  default     = "Active"
 }
 
 ################################
@@ -127,5 +139,17 @@ variable "create_user_attachment" {
 variable "policies" {
   description = "List of the policies that binds the role. Each item can contains keys: 'policy_name'(the name of policy that used to bind the role), 'policy_type'(the type of ram policies, System or Custom, default to Custom.)."
   type        = list(map(string))
+  default     = []
+}
+
+variable "managed_custom_policy_names" {
+  description = "List of names of managed policies of Custom type to attach to RAM user"
+  type        = list(string)
+  default     = []
+}
+
+variable "managed_system_policy_names" {
+  description = "List of names of managed policies of System type to attach to RAM user"
+  type        = list(string)
   default     = []
 }

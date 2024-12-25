@@ -48,10 +48,20 @@ resource "alicloud_ram_login_profile" "this" {
 # RAM access key
 ################################
 resource "alicloud_ram_access_key" "this" {
-  count = var.create_ram_access_key ? 1 : 0
+  count = local.create && var.create_ram_access_key && var.pgp_key != "" ? 1 : 0
 
   user_name   = local.this_user_name
   secret_file = var.secret_file
+  status      = var.status
+  pgp_key     = var.pgp_key != "" ? var.pgp_key : null
+}
+
+resource "alicloud_ram_access_key" "this_no_pgp" {
+  count = local.create && var.create_ram_access_key && var.pgp_key == "" ? 1 : 0
+
+  user_name   = local.this_user_name
+  secret_file = var.secret_file != "" ? var.secret_file : null
+  status      = var.status
 }
 
 ################################
@@ -63,4 +73,20 @@ resource "alicloud_ram_user_policy_attachment" "this" {
   user_name   = local.this_user_name
   policy_name = lookup(local.policy_list[count.index], "policy_name")
   policy_type = lookup(local.policy_list[count.index], "policy_type")
+}
+
+resource "alicloud_ram_user_policy_attachment" "custom" {
+  for_each = { for k, v in var.managed_custom_policy_names : k => v if local.create }
+
+  user_name   = alicloud_ram_user.this[0].name
+  policy_name = each.value
+  policy_type = "Custom"
+}
+
+resource "alicloud_ram_user_policy_attachment" "system" {
+  for_each = { for k, v in var.managed_system_policy_names : k => v if local.create }
+
+  user_name   = alicloud_ram_user.this[0].name
+  policy_name = each.value
+  policy_type = "System"
 }
