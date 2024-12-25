@@ -1,5 +1,21 @@
-variable "policy_name" {
-  default = "tf-example-policy"
+locals {
+  policy_name = "tfmod-ram-user-example-complete-custom-policy-1"
+}
+
+resource "alicloud_ram_policy" "custom-policy-1" {
+  policy_name     = local.policy_name
+  policy_document = <<EOF
+	{
+		"Version": "1",
+		"Statement": [
+		  {
+			"Action": "ecs:*",
+			"Resource": "*",
+			"Effect": "Allow"
+		  }
+		]
+	  }
+	EOF
 }
 
 module "ram_user" {
@@ -86,13 +102,10 @@ module "ram_user_policy_attachment" {
   existing_user_name = module.ram_user.this_user_name
   policies = [
     {
-      policy_names = var.policy_name
+      policy_names = local.policy_name
       policy_type  = "Custom"
     }
   ]
-
-  depends_on = [ module.ram_policy ]
-
 }
 
 module "ram_group" {
@@ -129,27 +142,8 @@ module "ram_group_policy_attachment" {
   existing_group_name = module.ram_group.this_group_name[0]
   policies = [
     {
-      policy_names = var.policy_name
+      policy_names = local.policy_name
       policy_type  = "Custom"
-    }
-  ]
-
-  depends_on = [ module.ram_policy ]
-}
-
-module "ram_policy" {
-  source = "terraform-alicloud-modules/ram-policy/alicloud"
-  policies = [
-    {
-      name            = var.policy_name
-      defined_actions = join(",", ["slb-all", "vpc-all", "vswitch-all"])
-      actions         = join(",", ["vpc:AssociateEipAddress", "vpc:UnassociateEipAddress"])
-      resources       = join(",", ["acs:vpc:*:*:eip/eip-12345", "acs:slb:*:*:*"])
-    },
-    {
-      actions   = join(",", ["ecs:ModifyInstanceAttribute", "vpc:ModifyVpc", "vswitch:ModifyVSwitch"])
-      resources = join(",", ["acs:ecs:*:*:instance/i-001", "acs:vpc:*:*:vpc/v-001", "acs:vpc:*:*:vswitch/vsw-001"])
-      effect    = "Deny"
     }
   ]
 }
