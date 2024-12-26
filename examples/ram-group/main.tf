@@ -1,10 +1,14 @@
+locals {
+  resource_name_prefix = "tfmod-ram-user-ram-group"
+}
+
 resource "alicloud_ram_user" "default" {
   count = 2
   name  = "user-${count.index + 1}"
 }
 
 resource "alicloud_ram_policy" "custom-policy-1" {
-  policy_name     = "tfmod-ram-user-example-ram-group-custom-policy-1"
+  policy_name     = "${local.resource_name_prefix}-custom-policy-1"
   policy_document = <<EOF
 	{
 		"Version": "1",
@@ -20,7 +24,7 @@ resource "alicloud_ram_policy" "custom-policy-1" {
 }
 
 resource "alicloud_ram_policy" "custom-policy-2" {
-  policy_name     = "tfmod-ram-user-example-ram-group-custom-policy-2"
+  policy_name     = "${local.resource_name_prefix}-custom-policy-2"
   policy_document = <<EOF
 	{
 		"Version": "1",
@@ -36,7 +40,7 @@ resource "alicloud_ram_policy" "custom-policy-2" {
 }
 
 resource "alicloud_ram_policy" "custom-policy-3" {
-  policy_name     = "tfmod-ram-user-example-ram-group-custom-policy-3"
+  policy_name     = "${local.resource_name_prefix}-custom-policy-3"
   policy_document = <<EOF
 	{
 		"Version": "1",
@@ -58,7 +62,7 @@ module "ram-group" {
   ################################
   # RAM group
   ################################
-  group_name = "test-ram-group"
+  group_name = "${local.resource_name_prefix}-example-group"
   comments   = "this is a test ram group"
 
   ################################

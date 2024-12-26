@@ -1,5 +1,6 @@
 locals {
-  policy_name = "tfmod-ram-user-example-complete-custom-policy-1"
+  resource_name_prefix = "tfmod-ram-user-complete"
+  policy_name = "${local.resource_name_prefix}-custom-policy-1"
 }
 
 resource "alicloud_ram_policy" "custom-policy-1" {
@@ -24,7 +25,7 @@ module "ram_user" {
   # RAM user
   create = true
 
-  user_name          = "tf-testacc-user-2022"
+  user_name          = "${local.resource_name_prefix}-user-2022"
   display_name       = var.display_name
   mobile             = var.mobile
   email              = var.email
@@ -114,7 +115,7 @@ module "ram_group" {
   # RAM group
   create = true
 
-  group_name          = "tf-testacc-group"
+  group_name          = "${local.resource_name_prefix}-group"
   comments            = var.comments
   force_destroy_group = var.force_destroy_user
 

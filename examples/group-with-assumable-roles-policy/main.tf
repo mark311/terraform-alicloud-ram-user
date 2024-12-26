@@ -1,3 +1,7 @@
+locals {
+  resource_name_prefix = "tfmod-ram-user-group-with-assumable"
+}
+
 data "alicloud_account" "this" {
 }
 
@@ -5,19 +9,19 @@ data "alicloud_account" "this" {
 # Prepare 2 RAM users
 #########################
 resource "alicloud_ram_user" "prepared-user-1" {
-  name = "tf-example-RGWARP-basic-prepared-user-1"
+  name = "${local.resource_name_prefix}-prepared-user-1"
 }
 
 resource "alicloud_ram_user" "prepared-user-2" {
-  name = "tf-example-RGWARP-basic-prepared-user-2"
+  name = "${local.resource_name_prefix}-prepared-user-2"
 }
 
 ######################################
 # Prepare several ram assumable roles
 ######################################
 resource "alicloud_ram_role" "prepared-role" {
-  name        = "tf-example-RGWARP-basic-prepared-role"
-  description = "tf-example-RGWARP-basic-prepared-role"
+  name        = "${local.resource_name_prefix}-prepared-role"
+  description = "${local.resource_name_prefix}-prepared-role"
   document    = <<EOF
   {
     "Statement": [
@@ -44,7 +48,7 @@ resource "alicloud_ram_role" "prepared-role" {
 module "ram-group-with-assumable-roles-policy-example" {
   source = "../../modules/group-with-assumable-roles-policy"
 
-  group_name      = "tf-example-RGWARP-basic"
+  group_name      = "${local.resource_name_prefix}-example"
   policy_name     = "AliyunOSSFullAccess"
 
   assumable_roles = [
