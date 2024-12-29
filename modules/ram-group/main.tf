@@ -49,3 +49,19 @@ resource "alicloud_ram_group_policy_attachment" "this" {
   policy_name = lookup(local.policy_list[count.index], "policy_name")
   policy_type = lookup(local.policy_list[count.index], "policy_type")
 }
+
+resource "alicloud_ram_group_policy_attachment" "managed_custom" {
+  count = length(var.managed_custom_policy_names) > 0 ? length(var.managed_custom_policy_names) : 0
+
+  group_name  = local.group_name
+  policy_name = element(var.managed_custom_policy_names, count.index)
+  policy_type = "Custom"
+}
+
+resource "alicloud_ram_group_policy_attachment" "managed_system" {
+  count = length(var.managed_system_policy_names) > 0 ? length(var.managed_system_policy_names) : 0
+
+  group_name  = local.group_name
+  policy_name = element(var.managed_system_policy_names, count.index)
+  policy_type = "System"
+}
