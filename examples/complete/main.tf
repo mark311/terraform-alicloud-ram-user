@@ -52,7 +52,7 @@ module "ram_login_profile" {
   # RAM login profile
   create_ram_user_login_profile = true
 
-  existing_user_name      = module.ram_user.this_user_name
+  existing_user_name      = module.ram_user.user_name
   password                = var.password
   password_reset_required = var.password_reset_required
   mfa_bind_required       = var.mfa_bind_required
@@ -77,7 +77,7 @@ module "ram_access_key" {
   # RAM access key
   create_ram_access_key = true
 
-  existing_user_name = module.ram_user.this_user_name
+  existing_user_name = module.ram_user.user_name
   secret_file        = "secret.txt"
 
   # RAM user policy attachment
@@ -100,7 +100,7 @@ module "ram_user_policy_attachment" {
   # RAM user policy attachment
   create_user_attachment = true
 
-  existing_user_name = module.ram_user.this_user_name
+  existing_user_name = module.ram_user.user_name
   policies = [
     {
       policy_names = local.policy_name
@@ -128,8 +128,8 @@ module "ram_group_membership" {
   create = false
 
   # RAM group membership
-  existing_group_name = module.ram_group.this_group_name[0]
-  user_names          = [module.ram_user.this_user_name]
+  existing_group_name = module.ram_group.group_name[0]
+  user_names          = [module.ram_user.user_name]
 
 }
 
@@ -140,7 +140,7 @@ module "ram_group_policy_attachment" {
   create = false
 
   # RAM group policy attachements
-  existing_group_name = module.ram_group.this_group_name[0]
+  existing_group_name = module.ram_group.group_name[0]
   policies = [
     {
       policy_names = local.policy_name
