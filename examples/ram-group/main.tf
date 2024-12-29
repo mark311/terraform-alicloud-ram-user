@@ -4,7 +4,7 @@ locals {
 
 resource "alicloud_ram_user" "default" {
   count = 2
-  name  = "user-${count.index + 1}"
+  name  = "${local.resource_name_prefix}-user-${count.index + 1}"
 }
 
 resource "alicloud_ram_policy" "custom-policy-1" {
