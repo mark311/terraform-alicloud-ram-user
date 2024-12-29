@@ -1,5 +1,5 @@
 locals {
-  resource_name_prefix = "tfmod-ram-user-group-with-assumable"
+  resource_name_prefix = "tfmod-ram-user-ram-group-with-assumable"
 }
 
 data "alicloud_account" "this" {
@@ -46,7 +46,7 @@ resource "alicloud_ram_role" "prepared-role" {
 # the prepared roles.
 #################################################################
 module "ram-group-with-assumable-roles-policy-example" {
-  source = "../../modules/group-with-assumable-roles-policy"
+  source = "../../modules/ram-group-with-assumable-roles-policy"
 
   group_name      = "${local.resource_name_prefix}-example"
   policy_name     = "AliyunOSSFullAccess"
