@@ -4,7 +4,7 @@ output "this_user_name" {
 }
 
 output "this_ram_user_unique_id" {
-  description = "(Deprecated, use 'ram_user_unique_id') The unique ID assigned by alicloud"
+  description = "(Deprecated, use 'user_id') The unique ID assigned by alicloud"
   value       = concat(alicloud_ram_user.this.*.id, [""])[0]
 }
 
@@ -18,17 +18,12 @@ output "user_name" {
   value       = concat(alicloud_ram_user.this.*.name, [""])[0]
 }
 
-output "ram_user_unique_id" {
-  description = "The unique ID assigned by alicloud"
-  value       = concat(alicloud_ram_user.this.*.id, [""])[0]
-}
-
 output "user_policy_name" {
   description = "The name of RAM policy which bind to RAM user"
   value       = concat(alicloud_ram_user_policy_attachment.this.*.policy_name, [""])[0]
 }
 
-output "user_unique_id" {
+output "user_id" {
   description = "The unique ID assigned by alicloud"
   value       = concat(alicloud_ram_user.this.*.id, [""])[0]
 }

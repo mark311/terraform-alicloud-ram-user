@@ -3,19 +3,14 @@ output "user_name" {
   value       = module.ram-user-example.user_name
 }
 
-output "ram_user_unique_id" {
-  description = "The unique ID assigned by alicloud"
-  value       = module.ram-user-example.ram_user_unique_id
-}
-
 output "user_policy_name" {
   description = "The name of RAM policy which bind to RAM user"
   value       = module.ram-user-example.user_policy_name
 }
 
-output "user_unique_id" {
+output "user_id" {
   description = "The unique ID assigned by alicloud"
-  value       = module.ram-user-example.user_unique_id
+  value       = module.ram-user-example.user_id
 }
 
 output "access_key_id" {

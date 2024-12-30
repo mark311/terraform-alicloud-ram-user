@@ -3,9 +3,9 @@ output "user_name" {
   value       = module.ram_user.user_name
 }
 
-output "ram_user_unique_id" {
+output "user_id" {
   description = "The unique ID assigned by alicloud"
-  value       = module.ram_user.ram_user_unique_id
+  value       = module.ram_user.user_id
 }
 
 output "user_policy_name" {
