@@ -32,7 +32,7 @@ variable "create" {
 }
 
 variable "existing_user_name" {
-  description = "The name of an existing RAM group. If set, 'create' will be ignored."
+  description = "(Deprecated) The name of an existing RAM group. If set, 'create' will be ignored."
   type        = string
   default     = ""
 }
