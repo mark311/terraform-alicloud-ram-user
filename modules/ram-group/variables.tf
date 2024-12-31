@@ -67,13 +67,13 @@ variable "user_names" {
 # RAM group policy attachements
 ################################
 variable "create_group_attachment" {
-  description = "Whether to attach RAM policy to RAM group"
+  description = "(Deprecated, works with the deprecated variable 'policies') Whether to attach RAM policy to RAM group"
   type        = bool
   default     = false
 }
 
 variable "policies" {
-  description = "List of the policies that binds the role. Each item can contains keys: 'policy_name'(the name of policy that used to bind the role), 'policy_type'(the type of ram policies, System or Custom, default to Custom.)."
+  description = "(Deprecated, use 'managed_custom_policy_names' and 'managed_system_policy_names') List of the policies that binds the role. Each item can contains keys: 'policy_name'(the name of policy that used to bind the role), 'policy_type'(the type of ram policies, System or Custom, default to Custom.)."
   type        = list(map(string))
   default     = []
 }
