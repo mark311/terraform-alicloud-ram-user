@@ -8,9 +8,9 @@ output "user_id" {
   value       = module.ram_user.user_id
 }
 
-output "user_policy_name" {
-  description = "The name of RAM policy which bind to RAM user"
-  value       = module.ram_user_policy_attachment.user_policy_name
+output "this_user_policy_name" {
+  description = "(Deprecated, only works with the deprecated variable 'policies') The name of RAM policy which bind to RAM user"
+  value       = module.ram_user_policy_attachment.this_user_policy_name
 }
 
 output "group_name" {

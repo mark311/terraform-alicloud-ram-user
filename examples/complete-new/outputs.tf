@@ -3,9 +3,9 @@ output "user_name" {
   value       = module.ram-user-example.user_name
 }
 
-output "user_policy_name" {
-  description = "The name of RAM policy which bind to RAM user"
-  value       = module.ram-user-example.user_policy_name
+output "this_user_policy_name" {
+  description = "(Deprecated, only works with the deprecated variable 'policies') The name of RAM policy which bind to RAM user"
+  value       = module.ram-user-example.this_user_policy_name
 }
 
 output "user_id" {

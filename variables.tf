@@ -131,13 +131,13 @@ variable "status" {
 # RAM user policy attachment
 ################################
 variable "create_user_attachment" {
-  description = "Whether to attach RAM policy to RAM user. Default value is 'false'."
+  description = "(Deprecated, works with the deprecated variable 'policies') Whether to attach RAM policy to RAM user. Default value is 'false'."
   type        = bool
   default     = false
 }
 
 variable "policies" {
-  description = "List of the policies that binds the role. Each item can contains keys: 'policy_name'(the name of policy that used to bind the role), 'policy_type'(the type of ram policies, System or Custom, default to Custom.)."
+  description = "(Deprecated, use 'managed_custom_policy_names' and 'managed_system_policy_names') List of the policies that binds the user. Each item can contains keys: 'policy_name'(the name of policy that used to bind the user), 'policy_type'(the type of ram policies, System or Custom, default to Custom.)."
   type        = list(map(string))
   default     = []
 }
