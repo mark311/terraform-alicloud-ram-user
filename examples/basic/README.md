@@ -30,7 +30,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_ram-user-example"></a> [ram-user-example](#module\_ram-user-example) | ../../modules/ram-user | n/a |
+| <a name="module_ram-user-example"></a> [ram-user-example](#module\_ram-user-example) | ../.. | n/a |
 
 ## Resources
 
@@ -44,12 +44,13 @@ No inputs.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_this_pgp_key"></a> [this\_pgp\_key](#output\_this\_pgp\_key) | PGP key used to encrypt sensitive data for this user (if empty, no encryption) |
-| <a name="output_this_ram_access_key_encrypted_secret"></a> [this\_ram\_access\_key\_encrypted\_secret](#output\_this\_ram\_access\_key\_encrypted\_secret) | The access key encrypted secret, base64 encoded |
-| <a name="output_this_ram_access_key_id"></a> [this\_ram\_access\_key\_id](#output\_this\_ram\_access\_key\_id) | The unique ID assigned by Alibaba Cloud |
-| <a name="output_this_ram_access_key_key_fingerprint"></a> [this\_ram\_access\_key\_key\_fingerprint](#output\_this\_ram\_access\_key\_key\_fingerprint) | The fingerprint of the PGP key used to encrypt the secret |
-| <a name="output_this_ram_access_key_secret"></a> [this\_ram\_access\_key\_secret](#output\_this\_ram\_access\_key\_secret) | The access key secret |
-| <a name="output_this_ram_access_key_status"></a> [this\_ram\_access\_key\_status](#output\_this\_ram\_access\_key\_status) | Active or Inactive. Keys are initially active, but can be made inactive by other means. |
-| <a name="output_this_ram_user_name"></a> [this\_ram\_user\_name](#output\_this\_ram\_user\_name) | The user's name |
-| <a name="output_this_ram_user_unique_id"></a> [this\_ram\_user\_unique\_id](#output\_this\_ram\_user\_unique\_id) | The unique ID assigned by Alibaba Cloud |
+| <a name="output_access_key_encrypted_secret"></a> [access\_key\_encrypted\_secret](#output\_access\_key\_encrypted\_secret) | The access key encrypted secret, base64 encoded |
+| <a name="output_access_key_id"></a> [access\_key\_id](#output\_access\_key\_id) | The access key ID |
+| <a name="output_access_key_key_fingerprint"></a> [access\_key\_key\_fingerprint](#output\_access\_key\_key\_fingerprint) | The fingerprint of the PGP key used to encrypt the secret |
+| <a name="output_access_key_secret"></a> [access\_key\_secret](#output\_access\_key\_secret) | The access key secret |
+| <a name="output_access_key_status"></a> [access\_key\_status](#output\_access\_key\_status) | Active or Inactive. Keys are initially active, but can be made inactive by other means. |
+| <a name="output_pgp_key"></a> [pgp\_key](#output\_pgp\_key) | PGP key used to encrypt sensitive data for this user (if empty, no encryption) |
+| <a name="output_this_user_policy_name"></a> [this\_user\_policy\_name](#output\_this\_user\_policy\_name) | (Deprecated, only works with the deprecated variable 'policies') The name of RAM policy which bind to RAM user |
+| <a name="output_user_id"></a> [user\_id](#output\_user\_id) | The unique ID assigned by alicloud |
+| <a name="output_user_name"></a> [user\_name](#output\_user\_name) | The name of RAM user |
 <!-- END_TF_DOCS -->
