@@ -56,7 +56,7 @@ resource "alicloud_ram_policy" "custom-policy-3" {
 }
 
 
-module "ram-group" {
+module "example" {
   source = "../../modules/ram-group"
 
   ################################

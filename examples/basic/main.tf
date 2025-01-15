@@ -2,7 +2,7 @@ locals {
   resource_name_prefix = "tfmod-ram-user-basic"
 }
 
-module "ram-user-example" {
+module "example" {
   source = "../.."
 
   user_name                     = "${local.resource_name_prefix}-example"

@@ -37,7 +37,7 @@ resource "alicloud_ram_policy" "custom-policy-1" {
 	EOF
 }
 
-module "ram-user-example" {
+module "example" {
   source = "../.."
 
   user_name                     = "${local.resource_name_prefix}-example"

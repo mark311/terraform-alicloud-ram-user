@@ -45,7 +45,7 @@ resource "alicloud_ram_role" "prepared-role" {
 # Create a ram group where user1 and user2 are allowed to assume
 # the prepared roles.
 #################################################################
-module "ram-group-with-assumable-roles-policy-example" {
+module "example" {
   source = "../../modules/ram-group-with-assumable-roles-policy"
 
   group_name      = "${local.resource_name_prefix}-example"
