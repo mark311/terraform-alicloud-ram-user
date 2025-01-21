@@ -2,9 +2,6 @@ locals {
   resource_name_prefix = "tfmod-ram-user-ram-group-with-assumable"
 }
 
-data "alicloud_account" "this" {
-}
-
 #########################
 # Prepare 2 RAM users
 #########################
