@@ -3,7 +3,7 @@ resource "random_uuid" "this" {
 
 locals {
   create         = var.existing_user_name != null ? false : var.create
-  user_name      = var.user_name != "" ? var.user_name : substr("ram-user-${replace(random_uuid.this.result, "-", "")}", 0, 32)
+  user_name      = var.user_name != null ? var.user_name : substr("ram-user-${replace(random_uuid.this.result, "-", "")}", 0, 32)
   policy_list = flatten(
     [
       for _, obj in var.policies : [

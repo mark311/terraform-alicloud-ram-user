@@ -1,8 +1,7 @@
-#alicloud_ram_policy
 variable "policy_name" {
   description = "Name of RAM policy, If not set, a default name with prefix `assumable-roles-policy-` will be returned. "
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "action" {
@@ -26,7 +25,7 @@ variable "force" {
 variable "group_name" {
   description = "Name of RAM group. If not set, a default name with prefix `group-assumable-roles-` will be returned."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "user_names" {

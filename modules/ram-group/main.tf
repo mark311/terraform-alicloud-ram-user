@@ -4,7 +4,7 @@ resource "random_uuid" "this" {
 locals {
   create        = var.existing_group_name != null ? false : var.create
   attach_policy = var.existing_group_name != null || var.create ? true : false
-  group_name    = var.group_name != "" ? var.group_name : substr("ram-group-${replace(random_uuid.this.result, "-", "")}", 0, 32)
+  group_name    = var.group_name != null ? var.group_name : substr("ram-group-${replace(random_uuid.this.result, "-", "")}", 0, 32)
   policy_list = flatten(
     [
       for _, obj in var.policies : [

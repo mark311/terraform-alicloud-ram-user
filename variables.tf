@@ -13,7 +13,7 @@ variable "existing_user_name" {
 variable "user_name" {
   description = "Desired name for the ram user. If not set, a default name with prefix 'ram-user-' will be returned."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "display_name" {

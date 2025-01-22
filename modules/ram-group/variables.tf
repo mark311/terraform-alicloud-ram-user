@@ -13,7 +13,7 @@ variable "existing_group_name" {
 variable "group_name" {
   description = "Name of the RAM group. If not set, a default name with prefix 'ram-group-' will be returned."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "comments" {

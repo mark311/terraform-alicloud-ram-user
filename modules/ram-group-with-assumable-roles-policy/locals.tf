@@ -1,6 +1,6 @@
 locals {
-  policy_name = var.policy_name != "" ? var.policy_name : substr("assumable-roles-policy-${replace(random_uuid.this.result, "-", "")}", 0, 32)
-  group_name  = var.group_name != "" ? var.group_name : substr("group-assumable-roles-${replace(random_uuid.this.result, "-", "")}", 0, 32)
+  policy_name = var.policy_name != null ? var.policy_name : substr("assumable-roles-policy-${replace(random_uuid.this.result, "-", "")}", 0, 32)
+  group_name  = var.group_name != null ? var.group_name : substr("group-assumable-roles-${replace(random_uuid.this.result, "-", "")}", 0, 32)
 
   action          = jsonencode(var.action)
   assumable_roles = jsonencode(var.assumable_roles)
