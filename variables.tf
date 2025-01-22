@@ -85,7 +85,7 @@ variable "create_ram_access_key" {
 variable "pgp_key" {
   description = "Either a base-64 encoded PGP public key, or a keybase username in the form"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "secret_file" {
