@@ -2,8 +2,8 @@ resource "random_uuid" "this" {
 }
 
 locals {
-  create        = var.existing_group_name != "" ? false : var.create
-  attach_policy = var.existing_group_name != "" || var.create ? true : false
+  create        = var.existing_group_name != null ? false : var.create
+  attach_policy = var.existing_group_name != null || var.create ? true : false
   group_name    = var.group_name != "" ? var.group_name : substr("ram-group-${replace(random_uuid.this.result, "-", "")}", 0, 32)
   policy_list = flatten(
     [
@@ -15,7 +15,7 @@ locals {
       ]
     ]
   )
-  this_group_name = var.existing_group_name != "" ? var.existing_group_name : concat(alicloud_ram_group.this.*.name, [""])[0]
+  this_group_name = var.existing_group_name != null ? var.existing_group_name : concat(alicloud_ram_group.this.*.name, [""])[0]
 }
 
 ################################

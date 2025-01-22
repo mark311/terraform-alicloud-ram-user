@@ -7,7 +7,7 @@ variable "create" {
 variable "existing_group_name" {
   description = "(Deprecated) The name of an existing RAM group. If set, 'create' will be ignored."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "group_name" {
