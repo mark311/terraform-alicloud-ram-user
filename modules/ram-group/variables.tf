@@ -19,7 +19,7 @@ variable "group_name" {
 variable "comments" {
   description = "Comment of the RAM group. This parameter can have a string of 1 to 128 characters."
   type        = string
-  default     = ""
+  default     = "this group was created by terrafom module ram-user/modules/ram-group."
 }
 
 variable "force_destroy_group" {
