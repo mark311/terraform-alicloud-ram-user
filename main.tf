@@ -2,7 +2,7 @@ resource "random_uuid" "this" {
 }
 
 locals {
-  create         = var.existing_user_name != "" ? false : var.create
+  create         = var.existing_user_name != null ? false : var.create
   user_name      = var.user_name != "" ? var.user_name : substr("ram-user-${replace(random_uuid.this.result, "-", "")}", 0, 32)
   policy_list = flatten(
     [
@@ -14,7 +14,7 @@ locals {
       ]
     ]
   )
-  this_user_name = var.existing_user_name != "" ? var.existing_user_name : concat(alicloud_ram_user.this.*.name, [""])[0]
+  this_user_name = var.existing_user_name != null ? var.existing_user_name : concat(alicloud_ram_user.this.*.name, [""])[0]
 }
 
 ################################
