@@ -58,7 +58,7 @@ variable "create_ram_user_login_profile" {
 variable "password" {
   description = "Login password of the user"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "password_reset_required" {
