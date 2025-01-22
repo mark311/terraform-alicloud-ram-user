@@ -23,10 +23,10 @@ locals {
 resource "alicloud_ram_user" "this" {
   count        = local.create ? 1 : 0
   name         = local.user_name
-  display_name = var.display_name != "" ? var.display_name : null
-  mobile       = var.mobile != "" ? var.mobile : null
-  email        = var.email != "" ? var.email : null
-  comments     = var.comments != "" ? var.comments : null
+  display_name = var.display_name
+  mobile       = var.mobile
+  email        = var.email
+  comments     = var.comments
   force        = var.force_destroy_user
 }
 

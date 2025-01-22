@@ -19,25 +19,25 @@ variable "user_name" {
 variable "display_name" {
   description = "Name of the RAM user which for display"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "mobile" {
   description = "Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "email" {
   description = "Email of the RAM user."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "comments" {
   description = "Comment of the RAM user. This parameter can have a string of 1 to 128 characters."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "force_destroy_user" {
