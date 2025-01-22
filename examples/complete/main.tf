@@ -128,7 +128,7 @@ module "ram_group_membership" {
   create = false
 
   # RAM group membership
-  existing_group_name = module.ram_group.group_name[0]
+  existing_group_name = module.ram_group.group_name
   user_names          = [module.ram_user.user_name]
 
 }
@@ -140,7 +140,7 @@ module "ram_group_policy_attachment" {
   create = false
 
   # RAM group policy attachements
-  existing_group_name = module.ram_group.group_name[0]
+  existing_group_name = module.ram_group.group_name
   policies = [
     {
       policy_names = local.policy_name

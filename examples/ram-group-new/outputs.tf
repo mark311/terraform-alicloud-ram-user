@@ -8,7 +8,7 @@ output "group_user_names" {
   value       = module.example.group_user_names
 }
 
-output "group_policy_name" {
-  description = "The name of policy which bind to group"
-  value       = module.example.group_policy_name
+output "this_group_policy_name" {
+  description = "(Deprecated, works with the deprecated variable 'policies') The name of policy which bind to group"
+  value       = module.example.this_group_policy_name
 }

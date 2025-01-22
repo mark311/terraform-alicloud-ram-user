@@ -74,7 +74,6 @@ module "example" {
   ################################
   # RAM group policy attachements
   ################################
-  create_group_attachment = true
   policies = [
     # Binding a system policy.
     {
