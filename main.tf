@@ -58,7 +58,7 @@ resource "alicloud_ram_access_key" "no_pgp" {
   count = local.create && var.create_ram_access_key && var.pgp_key == null ? 1 : 0
 
   user_name   = local.this_user_name
-  secret_file = var.secret_file != "" ? var.secret_file : null
+  secret_file = var.secret_file
   status      = var.status
 }
 

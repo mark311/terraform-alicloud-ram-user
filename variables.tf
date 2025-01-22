@@ -91,7 +91,7 @@ variable "pgp_key" {
 variable "secret_file" {
   description = "A file used to store access key and secret key of ther user."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "status" {
